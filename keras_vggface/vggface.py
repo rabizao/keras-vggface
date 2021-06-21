@@ -77,7 +77,7 @@ def VGGFace(include_top=True, model='vgg16', weights='vggface', cache_dir="~/.ke
 
         return VGG16(include_top=include_top, input_tensor=input_tensor,
                      input_shape=input_shape, pooling=pooling,
-                     weights=weights, cache_dir="~/.keras",
+                     weights=weights, cache_dir=cache_dir,
                      classes=classes)
 
 
@@ -93,7 +93,7 @@ def VGGFace(include_top=True, model='vgg16', weights='vggface', cache_dir="~/.ke
 
         return RESNET50(include_top=include_top, input_tensor=input_tensor,
                         input_shape=input_shape, pooling=pooling,
-                        weights=weights, cache_dir="~/.keras",
+                        weights=weights, cache_dir=cache_dir,
                         classes=classes)
 
     if model == 'senet50':
@@ -108,5 +108,5 @@ def VGGFace(include_top=True, model='vgg16', weights='vggface', cache_dir="~/.ke
 
         return SENET50(include_top=include_top, input_tensor=input_tensor,
                         input_shape=input_shape, pooling=pooling,
-                        weights=weights, cache_dir="~/.keras",
+                        weights=weights, cache_dir=cache_dir,
                         classes=classes)
