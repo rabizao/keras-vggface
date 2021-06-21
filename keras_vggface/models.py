@@ -23,7 +23,7 @@ from keras.models import Model
 from keras import layers
 
 
-def VGG16(include_top=True, weights='vggface',
+def VGG16(include_top=True, weights='vggface', cache_dir="~/.keras",
           input_tensor=None, input_shape=None,
           pooling=None,
           classes=2622):
@@ -107,12 +107,13 @@ def VGG16(include_top=True, weights='vggface',
     if weights == 'vggface':
         if include_top:
             weights_path = get_file('rcmalli_vggface_tf_vgg16.h5',
-                                    utils.
-                                    VGG16_WEIGHTS_PATH,
+                                    utils.VGG16_WEIGHTS_PATH,
+                                    cache_dir=cache_dir,
                                     cache_subdir=utils.VGGFACE_DIR)
         else:
             weights_path = get_file('rcmalli_vggface_tf_notop_vgg16.h5',
                                     utils.VGG16_WEIGHTS_PATH_NO_TOP,
+                                    cache_dir=cache_dir,
                                     cache_subdir=utils.VGGFACE_DIR)
         model.load_weights(weights_path, by_name=True)
         if K.backend() == 'theano':
@@ -204,7 +205,7 @@ def resnet_conv_block(input_tensor, kernel_size, filters, stage, block,
     return x
 
 
-def RESNET50(include_top=True, weights='vggface',
+def RESNET50(include_top=True, weights='vggface', cache_dir="~/.keras",
              input_tensor=None, input_shape=None,
              pooling=None,
              classes=8631):
@@ -278,11 +279,11 @@ def RESNET50(include_top=True, weights='vggface',
     if weights == 'vggface':
         if include_top:
             weights_path = get_file('rcmalli_vggface_tf_resnet50.h5',
-                                    utils.RESNET50_WEIGHTS_PATH,
+                                    utils.RESNET50_WEIGHTS_PATH, cache_dir=cache_dir,
                                     cache_subdir=utils.VGGFACE_DIR)
         else:
             weights_path = get_file('rcmalli_vggface_tf_notop_resnet50.h5',
-                                    utils.RESNET50_WEIGHTS_PATH_NO_TOP,
+                                    utils.RESNET50_WEIGHTS_PATH_NO_TOP, cache_dir=cache_dir,
                                     cache_subdir=utils.VGGFACE_DIR)
         model.load_weights(weights_path)
         if K.backend() == 'theano':
@@ -409,7 +410,7 @@ def senet_identity_block(input_tensor, kernel_size,
     return m
 
 
-def SENET50(include_top=True, weights='vggface',
+def SENET50(include_top=True, weights='vggface', cache_dir="~/.keras",
             input_tensor=None, input_shape=None,
             pooling=None,
             classes=8631):
@@ -485,11 +486,11 @@ def SENET50(include_top=True, weights='vggface',
     if weights == 'vggface':
         if include_top:
             weights_path = get_file('rcmalli_vggface_tf_senet50.h5',
-                                    utils.SENET50_WEIGHTS_PATH,
+                                    utils.SENET50_WEIGHTS_PATH, cache_dir=cache_dir,
                                     cache_subdir=utils.VGGFACE_DIR)
         else:
             weights_path = get_file('rcmalli_vggface_tf_notop_senet50.h5',
-                                    utils.SENET50_WEIGHTS_PATH_NO_TOP,
+                                    utils.SENET50_WEIGHTS_PATH_NO_TOP, cache_dir=cache_dir,
                                     cache_subdir=utils.VGGFACE_DIR)
         model.load_weights(weights_path)
         if K.backend() == 'theano':

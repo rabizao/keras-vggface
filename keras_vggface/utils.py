@@ -63,17 +63,17 @@ def preprocess_input(x, data_format=None, version=1):
     return x_temp
 
 
-def decode_predictions(preds, top=5):
+def decode_predictions(preds, top=5, cache_dir="~/.keras"):
     LABELS = None
     if len(preds.shape) == 2:
         if preds.shape[1] == 2622:
             fpath = get_file('rcmalli_vggface_labels_v1.npy',
-                             V1_LABELS_PATH,
+                             V1_LABELS_PATH, cache_dir=cache_dir,
                              cache_subdir=VGGFACE_DIR)
             LABELS = np.load(fpath)
         elif preds.shape[1] == 8631:
             fpath = get_file('rcmalli_vggface_labels_v2.npy',
-                             V2_LABELS_PATH,
+                             V2_LABELS_PATH, cache_dir=cache_dir,
                              cache_subdir=VGGFACE_DIR)
             LABELS = np.load(fpath)
         else:
